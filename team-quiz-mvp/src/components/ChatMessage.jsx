@@ -6,14 +6,9 @@ const ChatMessage = (props) => {
   return (
     <>
       <div>
-        <img
-          src={photoURL || "https://i.imgur.com/rFbS5ms.png"}
-          alt="{user}'s pfp"
-        />
-      </div>
-      <div>
-        <p>{user}</p>
-        <p>{body}</p>
+        <p>
+          {user}: {body}
+        </p>
       </div>
     </>
   );

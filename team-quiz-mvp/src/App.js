@@ -1,9 +1,9 @@
 import react, { useState, useEffect } from "react";
-import ChatRoom from "./ChatRoom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "./firebase";
-import SignIn from "./SignIn";
-import SignOut from "./SignOut";
+import { auth } from "./utils/firebase";
+import SignIn from "./components/SignIn";
+import SignOut from "./components/SignOut";
+import LobbyPage from "./components/LobbyPage";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {user ? <ChatRoom username={user.displayName} /> : <SignIn />}
+        {user ? <LobbyPage user={user} /> : <SignIn />}
       </header>
       <SignOut />
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
-import deleteUser from "./utils/deleteUser";
-import { auth } from "./firebase";
+import deleteUser from "../utils/deleteUser";
+import { auth } from "../utils/firebase";
 
 const SignOut = () => {
   const user = auth.currentUser;

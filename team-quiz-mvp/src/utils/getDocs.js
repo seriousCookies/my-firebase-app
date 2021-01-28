@@ -1,16 +1,20 @@
 import { firestore } from "./firebase";
 
-const getDocs = (setData) => {
-  firestore.collection("Things").onSnapshot((querySnapshot) => {
-    let testing = [];
-    querySnapshot.forEach((doc) => {
-      testing.push({
-        id: doc.id,
-        ...doc.data(),
+const getDocs = (collection, setData) => {
+  firestore
+    .collection(collection)
+    .orderBy("createdAt", "asc")
+    .limitToLast(25)
+    .onSnapshot((querySnapshot) => {
+      let testing = [];
+      querySnapshot.forEach((doc) => {
+        testing.push({
+          id: doc.id,
+          ...doc.data(),
+        });
       });
+      setData(testing);
     });
-    setData(testing);
-  });
 };
 
 export default getDocs;

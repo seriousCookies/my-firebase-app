@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import { Form, Row, Button, Container } from "react-bootstrap";
-import { addUser } from "./utils/addUser";
+import { addUser } from "../utils/addUser";
 function SignIn() {
   const [username, setUsername] = useState();
   const newUser = (e) => {
     e.preventDefault();
     addUser(username);
-    // auth
-    //   .signInAnonymously()
-    //   .then(() => {
-    //     // Signed in..
-    //   })
-    //   .catch((err) => {
-    //     console.log(err, "error adding user");
-    //   });
   };
   const addUsername = (e) => {
     setUsername(e.target.value);

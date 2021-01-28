@@ -1,13 +1,18 @@
-import React, { useRef } from "react";
-import firestore from "./firebase";
+import React, { useState, useEffect, useRef } from "react";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import ChatMessage from "./ChatMessage";
+import firebase, { auth, firestore } from "../utils/firebase";
+import addMessage from "../utils/addMessage";
+import startSession from "../utils/startSession";
 
-const ChatRoom = () => {
+const ChatRoom = ({ user }) => {
   const dummy = useRef();
   const messagesRef = firestore.collection("messages");
   const query = messagesRef.orderBy("createdAt", "asc").limitToLast(25);
 
   const [messages] = useCollectionData(query, { idField: "id" });
   const [formValue, setFormValue] = useState("");
+  const [sessionID, setSessionID] = useState();
 
   const scrollToBottom = () => {
     dummy.current.scrollIntoView({ behavior: "smooth" });
@@ -17,17 +22,7 @@ const ChatRoom = () => {
 
   const sendMessage = async (e) => {
     e.preventDefault();
-
-    const { displayName, uid, photoURL } = auth.currentUser;
-
-    await messagesRef.add({
-      user: displayName,
-      body: formValue,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      uid: uid,
-      photoURL: photoURL,
-    });
-
+    await addMessage(user, formValue);
     setFormValue("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
