@@ -3,16 +3,21 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import ChatMessage from "./ChatMessage";
 import firebase, { auth, firestore } from "../utils/firebase";
 import addMessage from "../utils/addMessage";
-import startSession from "../utils/startSession";
 import { Card, Form, Button, Row, Col } from "react-bootstrap";
-const ChatRoom = ({ user }) => {
+import DisplayMessages from "./DisplayMessages";
+const ChatRoom = ({ session }) => {
+  const user = auth.currentUser;
+  console.log(session, "here n");
   const dummy = useRef();
-  const messagesRef = firestore.collection("messages");
+  const messagesRef = session
+    ? firestore.collection("Sessions").doc(session).collection("messages")
+    : firestore.collection("messages");
+
   const query = messagesRef.orderBy("createdAt", "asc").limitToLast(25);
 
   const [messages] = useCollectionData(query, { idField: "id" });
+
   const [formValue, setFormValue] = useState("");
-  const [sessionID, setSessionID] = useState();
 
   const scrollToBottom = () => {
     dummy.current.scrollIntoView({ behavior: "smooth" });
@@ -22,7 +27,7 @@ const ChatRoom = ({ user }) => {
 
   const sendMessage = async (e) => {
     e.preventDefault();
-    await addMessage(user, formValue);
+    await addMessage(session, user, formValue);
     setFormValue("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
@@ -32,8 +37,7 @@ const ChatRoom = ({ user }) => {
       <Card.Header>Chat Room</Card.Header>
       <Card.Body>
         <Card.Text>
-          {messages &&
-            messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+          {messages && <DisplayMessages messages={messages} />}
           <span ref={dummy}></span>
         </Card.Text>
         <Card.Text>

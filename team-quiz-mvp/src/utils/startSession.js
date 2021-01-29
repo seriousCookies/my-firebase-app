@@ -4,8 +4,8 @@ const startSession = async (user, setSessionID) => {
   const sessionRef = firestore.collection("Sessions");
   await sessionRef
     .add({
-      owner: user.displayName,
-      ownerUID: user.uid,
+      owner: user.uid,
+      member: [user.uid],
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     })
     .then((docRef) => setSessionID(docRef.id));
