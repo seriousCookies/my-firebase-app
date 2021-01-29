@@ -9,7 +9,6 @@ import { SessionContext } from "./LobbyPage";
 const ChatRoom = () => {
   const { session } = useContext(SessionContext);
   const user = auth.currentUser;
-  console.log(session, "here n");
   const dummy = useRef();
   const messagesRef = session
     ? firestore.collection("Sessions").doc(session).collection("messages")
@@ -37,7 +36,7 @@ const ChatRoom = () => {
   return (
     <Card border="primary" style={{ width: "18rem" }}>
       <Card.Header>
-        {session ? "Private chat:" + session : "Public "}Chat Room
+        {session ? session + "'s Private Chat" : "Public Chat Room "}
       </Card.Header>
       <Card.Body>
         <Card.Text>

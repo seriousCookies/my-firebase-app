@@ -4,7 +4,6 @@ const addMessage = async (sessionID, user, formValue) => {
   const messagesRef = (await sessionID)
     ? firestore.collection("Sessions").doc(sessionID).collection("messages")
     : firestore.collection("messages");
-  console.log(sessionID, user, messagesRef, "this now?");
   await messagesRef.add({
     user: user.displayName,
     body: formValue,

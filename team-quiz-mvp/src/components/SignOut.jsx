@@ -4,8 +4,7 @@ import deleteUser from "../utils/deleteUser";
 import { auth } from "../utils/firebase";
 
 const SignOut = () => {
-  const user = auth.currentUser;
-  const removeUser = () => deleteUser(user);
+  const removeUser = () => deleteUser(auth.currentUser);
 
   return (
     auth.currentUser && (

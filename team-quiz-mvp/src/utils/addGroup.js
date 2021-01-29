@@ -5,7 +5,6 @@ const addGroup = async (sessionID, user) => {
     (await sessionID) &&
     firestore.collection("Sessions").doc(sessionID).collection("groups");
 
-  console.log(sessionID, user, groupsRef, "this now?");
   await groupsRef.add({
     owner: user.uid,
     member: [],
