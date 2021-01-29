@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Container, Row } from "react-bootstrap";
 import ChatRoom from "./ChatRoom";
 import CreateSession from "./CreateSession";
 import JoinSession from "./JoinSession";
@@ -9,11 +10,17 @@ const LobbyPage = () => {
   return session ? (
     <SessionLobby session={session} setSession={setSession} />
   ) : (
-    <div>
+    <Container>
       <ChatRoom />
-      <CreateSession session={session} setSession={setSession} />
-      <JoinSession session={session} setSession={setSession} />
-    </div>
+      <Container className="d-flex justify-content-center">
+        <Row>
+          <CreateSession session={session} setSession={setSession} />
+        </Row>
+        <Row>
+          <JoinSession session={session} setSession={setSession} />
+        </Row>
+      </Container>
+    </Container>
   );
 };
 

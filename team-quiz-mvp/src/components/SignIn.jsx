@@ -13,16 +13,14 @@ function SignIn() {
   return (
     <Container className="d-flex justify-content-center ">
       <Form onSubmit={newUser}>
+        <Form.Label>Enter in a username to get started</Form.Label>
         <Row className="align-items-center d-flex justify-content-center">
           <Col>
-            <Form.Group controlId="formUsername">
-              <Form.Label>Create a username</Form.Label>
-              <Form.Control
-                value={username}
-                onChange={addUsername}
-                placeholder="Enter your username"
-              />
-            </Form.Group>
+            <Form.Control
+              value={username}
+              onChange={addUsername}
+              placeholder="Enter your username"
+            />
           </Col>
           <Col>
             <Button variant="primary" type="submit">

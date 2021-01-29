@@ -3,7 +3,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import ChatMessage from "./ChatMessage";
 import firebase, { auth, firestore } from "../utils/firebase";
 import addMessage from "../utils/addMessage";
-import { Card, Form, Button, Row, Col } from "react-bootstrap";
+import { Card, Form, Button, Row, Col, Container } from "react-bootstrap";
 import DisplayMessages from "./DisplayMessages";
 const ChatRoom = ({ session }) => {
   const user = auth.currentUser;
@@ -33,7 +33,7 @@ const ChatRoom = ({ session }) => {
   };
 
   return (
-    <Card border="dark" style={{ width: "18rem" }}>
+    <Card border="primary" style={{ width: "18rem" }}>
       <Card.Header>
         {session ? "Private chat:" + session : "Public "}Chat Room
       </Card.Header>
@@ -43,23 +43,24 @@ const ChatRoom = ({ session }) => {
           <span ref={dummy}></span>
         </Card.Text>
         <Card.Text>
-          <Form onSubmit={sendMessage} className="pt-3 w-full inline-flex">
-            <Row>
-              <Col xs={12} md={8}>
-                <Form.Control
-                  className="rounded-3xl px-3 w-full py-1 outline-none focus:shadow"
-                  value={formValue}
-                  onChange={(e) => setFormValue(e.target.value)}
-                  placeholder="Say something"
-                />
-              </Col>
-              <Col xs={6} md={4}>
-                <Button type="submit" disabled={!formValue}>
-                  send
-                </Button>
-              </Col>
-            </Row>
-          </Form>
+          <Container className="d-flex justify-content-center ">
+            <Form onSubmit={sendMessage}>
+              <Row className="align-items-center d-flex justify-content-center">
+                <Col>
+                  <Form.Control
+                    value={formValue}
+                    onChange={(e) => setFormValue(e.target.value)}
+                    placeholder="Say something"
+                  />
+                </Col>
+                <Col>
+                  <Button type="submit" disabled={!formValue}>
+                    send
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </Container>
         </Card.Text>
       </Card.Body>
     </Card>

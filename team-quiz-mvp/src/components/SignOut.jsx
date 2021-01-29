@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Container } from "react-bootstrap";
 import deleteUser from "../utils/deleteUser";
 import { auth } from "../utils/firebase";
 
@@ -8,9 +9,11 @@ const SignOut = () => {
 
   return (
     auth.currentUser && (
-      <div>
-        <button onClick={removeUser}>Sign Out</button>
-      </div>
+      <Container className="d-flex justify-content-end">
+        <Button variant="outline-success" onClick={removeUser}>
+          Sign Out
+        </Button>
+      </Container>
     )
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, Row, Col, Form } from "react-bootstrap";
+import { Button, Modal, Row, Container, Col, Form } from "react-bootstrap";
 
 const JoinSession = ({ session, setSession }) => {
   const [show, setShow] = useState(false);
@@ -18,32 +18,37 @@ const JoinSession = ({ session, setSession }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Join a session
-      </Button>
+      <Container className="d-flex justify-content-center">
+        <Row className="d-flex justify-content-center">
+          <Button variant="primary" onClick={handleShow}>
+            Join a session
+          </Button>
+        </Row>
+      </Container>
 
       <Modal centered show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Join a session</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={joinTheSession} className="pt-3 w-full inline-flex">
-            <Row>
-              <Col xs={12} md={8}>
-                <Form.Control
-                  className="rounded-3xl px-3 w-full py-1 outline-none focus:shadow"
-                  value={formValue}
-                  onChange={(e) => setFormValue(e.target.value)}
-                  placeholder="enter in a session ID"
-                />
-              </Col>
-              <Col xs={6} md={4}>
-                <Button type="submit" disabled={!formValue}>
-                  send
-                </Button>
-              </Col>
-            </Row>
-          </Form>
+          <Container className="d-flex justify-content-center">
+            <Form onSubmit={joinTheSession}>
+              <Row className="align-items-center d-flex justify-content-center">
+                <Col>
+                  <Form.Control
+                    value={formValue}
+                    onChange={(e) => setFormValue(e.target.value)}
+                    placeholder="enter in a session ID"
+                  />
+                </Col>
+                <Col>
+                  <Button type="submit" disabled={!formValue}>
+                    send
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </Container>
         </Modal.Body>
       </Modal>
     </>
