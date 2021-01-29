@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import ChatMessage from "./ChatMessage";
-import firebase, { auth, firestore } from "../utils/firebase";
 import addMessage from "../utils/addMessage";
+import firebase, { auth, firestore } from "../utils/firebase";
 import { Card, Form, Button, Row, Col, Container } from "react-bootstrap";
 import DisplayMessages from "./DisplayMessages";
-const ChatRoom = ({ session }) => {
+import { SessionContext } from "./LobbyPage";
+
+const ChatRoom = () => {
+  const { session } = useContext(SessionContext);
   const user = auth.currentUser;
   console.log(session, "here n");
   const dummy = useRef();

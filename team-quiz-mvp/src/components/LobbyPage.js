@@ -1,26 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import { Container, Row } from "react-bootstrap";
 import ChatRoom from "./ChatRoom";
-import CreateSession from "./CreateSession";
-import JoinSession from "./JoinSession";
-import SessionLobby from "./SessionLobby";
+import CreateSession from "./session/CreateSession";
+import JoinSession from "./session/JoinSession";
+import SessionLobby from "./session/SessionLobby";
 
+export const SessionContext = createContext();
 const LobbyPage = () => {
   const [session, setSession] = useState();
-  return session ? (
-    <SessionLobby session={session} setSession={setSession} />
-  ) : (
-    <Container>
-      <ChatRoom />
-      <Container className="d-flex justify-content-center">
-        <Row>
-          <CreateSession session={session} setSession={setSession} />
-        </Row>
-        <Row>
-          <JoinSession session={session} setSession={setSession} />
-        </Row>
-      </Container>
-    </Container>
+  return (
+    <SessionContext.Provider value={{ session, setSession }}>
+      {session ? (
+        <SessionLobby />
+      ) : (
+        <Container>
+          <ChatRoom />
+          <Container className="d-flex justify-content-center">
+            <Row>
+              <CreateSession />
+            </Row>
+            <Row>
+              <JoinSession />
+            </Row>
+          </Container>
+        </Container>
+      )}
+    </SessionContext.Provider>
   );
 };
 

@@ -1,9 +1,11 @@
-import React from "react";
-import { Form, Row, Button, Container } from "react-bootstrap";
-import startSession from "../utils/startSession";
-import { auth } from "../utils/firebase";
+import React, { useContext } from "react";
+import { Row, Button, Container } from "react-bootstrap";
+import startSession from "../../utils/startSession";
+import { auth } from "../../utils/firebase";
+import { SessionContext } from "../LobbyPage";
 
-const CreateSession = ({ session, setSession }) => {
+const CreateSession = () => {
+  const { session, setSession } = useContext(SessionContext);
   const user = auth.currentUser;
 
   const createNewSession = (e) => {

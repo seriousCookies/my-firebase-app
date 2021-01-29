@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Modal, Row, Container, Col, Form } from "react-bootstrap";
+import { SessionContext } from "../LobbyPage";
 
-const JoinSession = ({ session, setSession }) => {
+const JoinSession = () => {
+  const { session, setSession } = useContext(SessionContext);
   const [show, setShow] = useState(false);
   const [formValue, setFormValue] = useState("");
 
