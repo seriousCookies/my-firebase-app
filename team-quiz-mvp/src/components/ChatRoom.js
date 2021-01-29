@@ -34,7 +34,9 @@ const ChatRoom = ({ session }) => {
 
   return (
     <Card border="dark" style={{ width: "18rem" }}>
-      <Card.Header>Chat Room</Card.Header>
+      <Card.Header>
+        {session ? "Private chat:" + session : "Public "}Chat Room
+      </Card.Header>
       <Card.Body>
         <Card.Text>
           {messages && <DisplayMessages messages={messages} />}

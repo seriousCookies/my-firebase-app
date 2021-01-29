@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Row, Button, Container } from "react-bootstrap";
+import { Form, Row, Button, Container, Col } from "react-bootstrap";
 import { addUser } from "../utils/addUser";
 function SignIn() {
   const [username, setUsername] = useState();
@@ -11,22 +11,26 @@ function SignIn() {
     setUsername(e.target.value);
   };
   return (
-    <Container className="d-flex justify-content-center">
-      <Row className="d-flex justify-content-center">
-        <Form onSubmit={newUser}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              value={username}
-              onChange={addUsername}
-              placeholder="Enter your username"
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-      </Row>
+    <Container className="d-flex justify-content-center ">
+      <Form onSubmit={newUser}>
+        <Row className="align-items-center d-flex justify-content-center">
+          <Col>
+            <Form.Group controlId="formUsername">
+              <Form.Label>Create a username</Form.Label>
+              <Form.Control
+                value={username}
+                onChange={addUsername}
+                placeholder="Enter your username"
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Col>
+        </Row>
+      </Form>
     </Container>
   );
 }

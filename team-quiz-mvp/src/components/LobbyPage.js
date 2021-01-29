@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import ChatRoom from "./ChatRoom";
 import CreateSession from "./CreateSession";
 import JoinSession from "./JoinSession";
+import SessionLobby from "./SessionLobby";
 
 const LobbyPage = () => {
   const [session, setSession] = useState();
-  return (
+  return session ? (
+    <SessionLobby session={session} setSession={setSession} />
+  ) : (
     <div>
-      {session && session}
-      <ChatRoom session={session} />
+      <ChatRoom />
       <CreateSession session={session} setSession={setSession} />
       <JoinSession session={session} setSession={setSession} />
     </div>
