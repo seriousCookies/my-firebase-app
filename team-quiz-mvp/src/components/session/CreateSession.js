@@ -3,13 +3,12 @@ import { Button, Modal, Row, Container, Col, Form } from "react-bootstrap";
 import addMember from "../../utils/addMember";
 import { SessionContext } from "../LobbyPage";
 import { auth } from "../../utils/firebase";
+import startSession from "../../utils/startSession";
 
 const CreateSession = () => {
   const { setSession } = useContext(SessionContext);
   const [show, setShow] = useState(false);
   const [formValue, setFormValue] = useState("");
-
-  const user = auth.currentUser;
 
   const handleClose = () => {
     setShow(false);
@@ -18,8 +17,7 @@ const CreateSession = () => {
   const handleShow = () => setShow(true);
   const createASession = (e) => {
     e.preventDefault();
-    addMember(formValue, user);
-    setSession(formValue);
+    startSession(auth.currentUser, formValue, setSession);
     handleClose();
   };
 

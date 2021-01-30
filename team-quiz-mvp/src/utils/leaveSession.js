@@ -1,4 +1,4 @@
-import firebase, { firestore } from "./firebase";
+import { firestore } from "./firebase";
 
 const leaveSession = async (sessionID, user) => {
   try {

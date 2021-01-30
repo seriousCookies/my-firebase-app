@@ -3,6 +3,7 @@ import { Button, Modal, Row, Container, Col, Form } from "react-bootstrap";
 import addMember from "../../utils/addMember";
 import { SessionContext } from "../LobbyPage";
 import { auth } from "../../utils/firebase";
+import validateSessionID from "../../utils/validateSessionID";
 
 const JoinSession = () => {
   const { setSession } = useContext(SessionContext);
@@ -16,8 +17,10 @@ const JoinSession = () => {
     setFormValue("");
   };
   const handleShow = () => setShow(true);
-  const joinTheSession = (e) => {
+  const joinTheSession = async (e) => {
     e.preventDefault();
+    const result = await validateSessionID(formValue);
+    // validateSessionID(formValue);
     addMember(formValue, user);
     setSession(formValue);
     handleClose();

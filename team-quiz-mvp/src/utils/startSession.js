@@ -1,24 +1,20 @@
 import firebase, { firestore } from "./firebase";
 
-const startSession = async (user, setSessionID) => {
-  const sessionRef = firestore.collection("Sessions");
-
-  let sessionID;
+const startSession = async (user, formValue, setSessionID) => {
+  const sessionRef = firestore.collection("Sessions").doc(formValue);
   await sessionRef
-    .add({
+    .set({
       owner: user.uid,
       members: [user.uid],
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     })
-    .then((docRef) => {
-      setSessionID(docRef.id);
-      sessionID = docRef.id;
+    .then(() => {
+      setSessionID(formValue);
     });
-  console.log(sessionID, "does this print??");
-  if (sessionID) {
+  if (formValue) {
     const memberRef = firestore
       .collection("Sessions")
-      .doc(sessionID)
+      .doc(formValue)
       .collection("members");
     await memberRef.add({
       user: user.displayName,
