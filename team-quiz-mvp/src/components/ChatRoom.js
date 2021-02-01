@@ -39,30 +39,26 @@ const ChatRoom = () => {
         {session ? session + "'s Private Chat" : "Public Chat Room "}
       </Card.Header>
       <Card.Body>
-        <Card.Text>
-          {messages && <DisplayMessages messages={messages} />}
-          <span ref={dummy}></span>
-        </Card.Text>
-        <Card.Text>
-          <Container className="d-flex justify-content-center ">
-            <Form onSubmit={sendMessage}>
-              <Row className="align-items-center d-flex justify-content-center">
-                <Col>
-                  <Form.Control
-                    value={formValue}
-                    onChange={(e) => setFormValue(e.target.value)}
-                    placeholder="Say something"
-                  />
-                </Col>
-                <Col>
-                  <Button type="submit" disabled={!formValue}>
-                    send
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
-          </Container>
-        </Card.Text>
+        {messages && <DisplayMessages messages={messages} />}
+        <span ref={dummy}></span>
+        <Container className="d-flex justify-content-center ">
+          <Form onSubmit={sendMessage}>
+            <Row className="align-items-center d-flex justify-content-center">
+              <Col>
+                <Form.Control
+                  value={formValue}
+                  onChange={(e) => setFormValue(e.target.value)}
+                  placeholder="Say something"
+                />
+              </Col>
+              <Col>
+                <Button type="submit" disabled={!formValue}>
+                  send
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </Container>
       </Card.Body>
     </Card>
   );

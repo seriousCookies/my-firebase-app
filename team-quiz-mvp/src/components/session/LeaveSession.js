@@ -1,22 +1,58 @@
-import React, { useContext } from "react";
-import { Button, Container } from "react-bootstrap";
+import React, { useState, useContext } from "react";
+import { Modal, Col, Button, Container } from "react-bootstrap";
 import leaveSession from "../../utils/leaveSession";
 import { SessionContext } from "../LobbyPage";
 import { auth } from "../../utils/firebase";
+import { deleteSession } from "../../utils/deleteSession";
 
-const LeaveSession = () => {
+const LeaveSession = ({ owner }) => {
   const { session, setSession } = useContext(SessionContext);
-  const leaveRoom = () => {
-    leaveSession(session, auth.currentUser);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const deleteCurrentSession = () => {
+    console.log("delete session");
+    deleteSession(session, auth.currentUser);
+    handleClose();
     setSession();
   };
 
+  const leaveRoom = () => {
+    if (owner) {
+      console.log("here now");
+      setShow(true);
+    } else {
+      leaveSession(session, auth.currentUser);
+      setSession();
+    }
+  };
+
   return (
-    <Container className="d-flex justify-content-end">
-      <Button variant="outline-success" onClick={leaveRoom}>
-        Leave Session
-      </Button>
-    </Container>
+    <>
+      <Container className="d-flex justify-content-end">
+        <Button variant="outline-success" onClick={leaveRoom}>
+          Leave Session
+        </Button>
+      </Container>
+
+      <Modal centered show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            You are the session creator- are you sure you want to delete this
+            session?
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="outline-success" onClick={handleClose}>
+            Go back
+          </Button>
+          <Button onClick={deleteCurrentSession}>Delete Session</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 

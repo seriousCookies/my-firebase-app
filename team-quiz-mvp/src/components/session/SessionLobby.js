@@ -25,7 +25,7 @@ const SessionLobby = () => {
           )}
         </Card.Title>
         <ChatRoom session={session} />
-        <LeaveSession setSession={setSession} />
+        <LeaveSession owner={owner} setSession={setSession} />
       </Card.Body>
     </Card>
   );
