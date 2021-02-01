@@ -14,7 +14,6 @@ const LeaveSession = ({ owner }) => {
   };
 
   const deleteCurrentSession = () => {
-    console.log("delete session");
     deleteSession(session, auth.currentUser);
     handleClose();
     setSession();
@@ -22,7 +21,6 @@ const LeaveSession = ({ owner }) => {
 
   const leaveRoom = () => {
     if (owner) {
-      console.log("here now");
       setShow(true);
     } else {
       leaveSession(session, auth.currentUser);

@@ -1,9 +1,21 @@
-import checkOwner from "./checkOwner";
 import firebase, { firestore } from "./firebase";
 
 export const deleteSession = async (session, user) => {
-  let permission;
-  await checkOwner(user.uid, session, (per) => (permission = per));
-
-  permission && firestore.collection("Sessions").doc(session).delete();
+  await firestore
+    .collection("Sessions")
+    .doc(session)
+    .collection("members")
+    .get()
+    .then((snapshot) => {
+      !snapshot.empty && snapshot.forEach((doc) => doc.ref.delete());
+    });
+  await firestore
+    .collection("Sessions")
+    .doc(session)
+    .collection("messages")
+    .get()
+    .then((snapshot) => {
+      !snapshot.empty && snapshot.forEach((doc) => doc.ref.delete());
+    });
+  await firestore.collection("Sessions").doc(session).delete();
 };
