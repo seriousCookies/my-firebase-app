@@ -4,6 +4,7 @@ import ChatRoom from "./ChatRoom";
 import CreateSession from "./session/CreateSession";
 import JoinSession from "./session/JoinSession";
 import SessionLobby from "./session/SessionLobby";
+import SessionList from "./SessionList";
 
 export const SessionContext = createContext();
 const LobbyPage = () => {
@@ -15,6 +16,9 @@ const LobbyPage = () => {
       ) : (
         <Container>
           <ChatRoom />
+          <Container>
+            <SessionList />
+          </Container>
           <Container className="d-flex justify-content-center">
             <Row>
               <CreateSession />
