@@ -1,0 +1,3 @@
+steps:
+  - name: gcr.io/my-first-firebase-8edd4/firebase
+    args: ["deploy", "--project=my-first-firebase-8edd4", "--only=hosting"]
