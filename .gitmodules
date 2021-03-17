@@ -1,0 +1,3 @@
+[submodule "team-quiz-mvp/team-quiz-mvp/cloud-builders-community"]
+	path = team-quiz-mvp/team-quiz-mvp/cloud-builders-community
+	url = https://github.com/GoogleCloudPlatform/cloud-builders-community
