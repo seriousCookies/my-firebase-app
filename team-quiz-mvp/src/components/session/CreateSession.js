@@ -1,24 +1,52 @@
-import React, { useState, useContext } from "react";
-import { Button, Modal, Row, Container, Col, Form } from "react-bootstrap";
+import React, { useState, useRef, useContext } from "react";
+import {
+  Button,
+  Modal,
+  Tooltip,
+  Overlay,
+  Row,
+  Container,
+  Col,
+  Form,
+} from "react-bootstrap";
 import addMember from "../../utils/addMember";
 import { SessionContext } from "../LobbyPage";
 import { auth } from "../../utils/firebase";
 import startSession from "../../utils/startSession";
+import RangeSlider from "react-bootstrap-range-slider";
+const _ = require("lodash");
+const defaultForm = {
+  sessionName: "",
+  sessionType: "Public",
+  maxPlayers: 1,
+};
 
 const CreateSession = () => {
   const { setSession } = useContext(SessionContext);
+  const [modalShow, setModalShow] = useState(false);
+  const [formValue, setFormValue] = useState(defaultForm);
   const [show, setShow] = useState(false);
-  const [formValue, setFormValue] = useState("");
-
-  const handleClose = () => {
-    setShow(false);
-    setFormValue("");
+  const target = useRef(null);
+  const showWarning = () => {
+    setShow(true);
+    setTimeout(() => {
+      setShow(false);
+    }, 2000);
   };
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setModalShow(false);
+    setFormValue(defaultForm);
+  };
+  const handleShow = () => setModalShow(true);
   const createASession = (e) => {
     e.preventDefault();
-    startSession(auth.currentUser, formValue, setSession);
-    handleClose();
+    if (formValue.sessionName === "") {
+      showWarning();
+    } else {
+      console.log(formValue);
+      startSession(auth.currentUser, formValue, setSession);
+      handleClose();
+    }
   };
 
   return (
@@ -28,31 +56,70 @@ const CreateSession = () => {
           <Button variant="primary" onClick={handleShow}>
             Create a session
           </Button>
+          <Overlay target={target.current} show={show} placement="bottom">
+            {(props) => (
+              <Tooltip id="overlay-example" {...props}>
+                Oops! Name your session!
+              </Tooltip>
+            )}
+          </Overlay>
         </Row>
       </Container>
 
-      <Modal centered show={show} onHide={handleClose}>
+      <Modal centered show={modalShow} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Create a session</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Container className="d-flex justify-content-center">
             <Form onSubmit={createASession}>
-              <Row className="align-items-center d-flex">
-                <Col>
-                  <Form.Control
-                    md="auto"
-                    value={formValue}
-                    onChange={(e) => setFormValue(e.target.value)}
-                    placeholder="give it a name..."
-                  />
-                </Col>
-                <Col>
-                  <Button type="submit" disabled={!formValue}>
-                    create!
-                  </Button>
-                </Col>
-              </Row>
+              <Form.Group controlId="form.sessionName">
+                <Form.Label>Session Name</Form.Label>
+                <Form.Control
+                  ref={target}
+                  onChange={(e) =>
+                    setFormValue({ ...formValue, sessionName: e.target.value })
+                  }
+                  placeholder="give it a name..."
+                />
+              </Form.Group>
+              <Form.Group controlId="form.sessionType">
+                <Form.Label>Session Type</Form.Label>
+                <Form.Control
+                  as="select"
+                  onChange={(e) =>
+                    setFormValue({ ...formValue, sessionType: e.target.value })
+                  }
+                >
+                  <option>Public</option>
+                  <option>Private</option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Group>
+                <Row>
+                  <Form.Label>Max Players</Form.Label>
+                </Row>
+                <RangeSlider
+                  variant="danger"
+                  value={formValue.maxPlayers}
+                  min={1}
+                  max={20}
+                  tooltip="on"
+                  onChange={(e) =>
+                    setFormValue({ ...formValue, maxPlayers: e.target.value })
+                  }
+                />
+              </Form.Group>
+              <Modal.Footer
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Button type="submit" disabled={!formValue}>
+                  Start Playing!
+                </Button>
+              </Modal.Footer>
             </Form>
           </Container>
         </Modal.Body>
