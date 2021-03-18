@@ -11,9 +11,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@main
       - name: Install Dependencies
-        run: npm install
+        run: yarn install
       - name: Build
-        run: npm run build
+        run: yarn build
       - name: Deploy to Firebase
         uses: lowply/deploy-firebase@v0.0.2
         env:
