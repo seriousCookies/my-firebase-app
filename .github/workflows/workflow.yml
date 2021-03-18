@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@main
       - name: Install Dependencies
-        run: npm install
+        run: cd team-quiz-mvp && npm install
       - name: Build
         run: npm run build
       - name: Deploy to Firebase
