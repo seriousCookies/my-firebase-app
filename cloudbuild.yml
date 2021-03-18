@@ -1,0 +1,3 @@
+steps:
+  - name: "gcr.io/firebase-chat-307814/packer"
+    args: ["build"]
