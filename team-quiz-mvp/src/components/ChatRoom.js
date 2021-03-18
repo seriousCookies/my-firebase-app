@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import addMessage from "../utils/addMessage";
-import firebase, { auth, firestore } from "../utils/firebase";
+import { auth, firestore } from "../utils/firebase";
 import { Card, Form, Button, Row, Col, Container } from "react-bootstrap";
 import DisplayMessages from "./DisplayMessages";
 import { SessionContext } from "./LobbyPage";

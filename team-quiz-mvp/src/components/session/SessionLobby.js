@@ -13,7 +13,7 @@ const SessionLobby = () => {
 
   useEffect(() => {
     checkOwner(user.uid, session, setOwner);
-  }, [session]);
+  }, [session, user.uid]);
 
   return (
     <Card>

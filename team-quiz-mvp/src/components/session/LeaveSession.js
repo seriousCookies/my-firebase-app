@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Modal, Col, Button, Container } from "react-bootstrap";
+import { Modal, Button, Container } from "react-bootstrap";
 import leaveSession from "../../utils/leaveSession";
 import { SessionContext } from "../LobbyPage";
 import { auth } from "../../utils/firebase";

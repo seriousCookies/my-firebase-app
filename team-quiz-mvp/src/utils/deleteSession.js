@@ -1,4 +1,4 @@
-import firebase, { firestore } from "./firebase";
+import { firestore } from "./firebase";
 
 export const deleteSession = async (session, user) => {
   await firestore

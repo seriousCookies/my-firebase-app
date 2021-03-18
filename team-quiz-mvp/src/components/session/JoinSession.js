@@ -20,6 +20,7 @@ const JoinSession = () => {
   const joinTheSession = async (e) => {
     e.preventDefault();
     const result = await validateSessionID(formValue);
+    console.log(result);
     // validateSessionID(formValue);
     addMember(formValue, user);
     setSession(formValue);

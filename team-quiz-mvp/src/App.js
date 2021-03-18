@@ -1,5 +1,5 @@
 import "./styles/custom-theme.scss";
-import react, { useState, useEffect } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./utils/firebase";
 import SignIn from "./components/SignIn";

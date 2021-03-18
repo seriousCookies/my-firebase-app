@@ -6,15 +6,12 @@ import {
   Overlay,
   Row,
   Container,
-  Col,
   Form,
 } from "react-bootstrap";
-import addMember from "../../utils/addMember";
 import { SessionContext } from "../LobbyPage";
 import { auth } from "../../utils/firebase";
 import startSession from "../../utils/startSession";
 import RangeSlider from "react-bootstrap-range-slider";
-const _ = require("lodash");
 const defaultForm = {
   sessionName: "",
   sessionType: "Public",

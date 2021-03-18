@@ -2,7 +2,7 @@ import { firestore } from "./firebase";
 
 const leaveSession = async (sessionID, user) => {
   try {
-    const doc = await firestore
+    await firestore
       .collection("Sessions")
       .doc(sessionID)
       .collection("members")
