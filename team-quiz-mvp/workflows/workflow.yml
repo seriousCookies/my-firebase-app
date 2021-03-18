@@ -1,0 +1,21 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Build and Deploy to Firebase Hosting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@main
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Deploy to Firebase
+        uses: lowply/deploy-firebase@v0.0.2
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE }}
+          FIREBASE_PROJECT: my-first-firebase-8edd4
