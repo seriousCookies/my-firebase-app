@@ -19,3 +19,4 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE }}
           FIREBASE_PROJECT: my-first-firebase-8edd4
+          TARGET_BRANCH: main
