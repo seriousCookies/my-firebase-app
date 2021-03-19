@@ -18,7 +18,7 @@ const SessionLobby = () => {
   return (
     <Card>
       <Card.Body>
-        <Card.Title>
+        <Card.Title className="text-center">
           Hey there! Welcome to {session}
           {owner && (
             <Card.Text className="font-italic">you are the creator</Card.Text>

@@ -6,7 +6,7 @@ const validateSessionID = async (sessionID) => {
     const snapshot = await sessionRef.get();
     return snapshot.exists;
   } catch (error) {
-    console.log(error, "inside the try catch");
+    console.log(error, "inside the try catch, no session found");
   }
 };
 
