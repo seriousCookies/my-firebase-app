@@ -4,7 +4,7 @@ import addMessage from "../utils/addMessage";
 import { auth, firestore } from "../utils/firebase";
 import { Card, Form, Button, Row, Col, Container } from "react-bootstrap";
 import DisplayMessages from "./DisplayMessages";
-import { SessionContext } from "./LobbyPage";
+import { SessionContext } from "./pages/LobbyPage";
 
 const ChatRoom = () => {
   const { session } = useContext(SessionContext);

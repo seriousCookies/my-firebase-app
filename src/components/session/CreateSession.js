@@ -8,7 +8,7 @@ import {
   Container,
   Form,
 } from "react-bootstrap";
-import { SessionContext } from "../LobbyPage";
+import { SessionContext } from "../pages/LobbyPage";
 import { auth } from "../../utils/firebase";
 import startSession from "../../utils/startSession";
 import RangeSlider from "react-bootstrap-range-slider";

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Modal, Button, Container } from "react-bootstrap";
 import leaveSession from "../../utils/leaveSession";
-import { SessionContext } from "../LobbyPage";
+import { SessionContext } from "../pages/LobbyPage";
 import { auth } from "../../utils/firebase";
 import { deleteSession } from "../../utils/deleteSession";
 

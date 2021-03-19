@@ -9,7 +9,7 @@ import {
   Form,
 } from "react-bootstrap";
 import addMember from "../../utils/addMember";
-import { SessionContext } from "../LobbyPage";
+import { SessionContext } from "../pages/LobbyPage";
 import { auth } from "../../utils/firebase";
 import validateSessionID from "../../utils/validateSessionID";
 
