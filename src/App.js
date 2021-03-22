@@ -34,9 +34,6 @@ function App() {
           <Route path="/signin" component={SignIn} />
           <Route path="/home" component={LobbyPage} />
           <Route path="/createQuiz" component={CreateQuiz} />
-          <Route path={`home/:sessionid}`}>
-            <SessionLobby />
-          </Route>
         </Switch>
       </Router>
       <Card.Footer>

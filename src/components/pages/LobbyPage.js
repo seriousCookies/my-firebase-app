@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 import { Container, Jumbotron, Row } from "react-bootstrap";
-import { Redirect, Route, useRouteMatch } from "react-router-dom";
+import { Redirect, useRouteMatch } from "react-router-dom";
 import ChatRoom from "../ChatRoom";
 import CreateSession from "../session/CreateSession";
 import JoinSession from "../session/JoinSession";
