@@ -6,6 +6,7 @@ import { SessionContext } from "../pages/LobbyPage";
 import { auth } from "../../utils/firebase";
 import checkOwner from "../../utils/checkOwner";
 import AddQuestion from "./components/quiz/AddQuestion";
+
 const SessionLobby = () => {
   const { session, setSession } = useContext(SessionContext);
   const [owner, setOwner] = useState(false);
@@ -14,7 +15,6 @@ const SessionLobby = () => {
   useEffect(() => {
     checkOwner(user.uid, session, setOwner);
   }, [session, user.uid]);
-
   return (
     <Card>
       <Card.Body>

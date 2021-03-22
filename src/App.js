@@ -26,15 +26,17 @@ function App() {
         <Switch>
           <Route path="/" exact>
             {user ? (
-              <Redirect to="/LobbyPage" auth={auth} />
+              <Redirect to="/home" auth={auth} />
             ) : (
               <SignIn auth={auth} />
             )}
           </Route>
           <Route path="/signin" component={SignIn} />
-          <Route path="/LobbyPage" component={LobbyPage} />
+          <Route path="/home" component={LobbyPage} />
           <Route path="/createQuiz" component={CreateQuiz} />
-          <Route path="/sessionLobby" component={SessionLobby} />
+          <Route path={`home/:sessionid}`}>
+            <SessionLobby />
+          </Route>
         </Switch>
       </Router>
       <Card.Footer>
