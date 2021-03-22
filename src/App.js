@@ -13,6 +13,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import CreateQuiz from "./components/pages/CreateQuiz";
+import SessionLobby from "./components/session/SessionLobby";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/signin" component={SignIn} />
           <Route path="/LobbyPage" component={LobbyPage} />
           <Route path="/createQuiz" component={CreateQuiz} />
+          <Route path="/sessionLobby" component={SessionLobby} />
         </Switch>
       </Router>
       <Card.Footer>

@@ -12,9 +12,7 @@ const LobbyPage = () => {
   if (auth.currentUser) {
     return (
       <SessionContext.Provider value={{ session, setSession }}>
-        {session ? (
-          <SessionLobby />
-        ) : (
+        {!session ? (
           <Jumbotron className="mb-0">
             <ChatRoom />
             <Container className="d-flex justify-content-center">
@@ -26,6 +24,8 @@ const LobbyPage = () => {
               </Row>
             </Container>
           </Jumbotron>
+        ) : (
+          <SessionLobby />
         )}
       </SessionContext.Provider>
     );
