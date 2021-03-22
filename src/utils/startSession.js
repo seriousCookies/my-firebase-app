@@ -7,6 +7,7 @@ const startSession = async (user, formValue, setSessionID) => {
   await sessionRef
     .set({
       owner: user.uid,
+      maxPlayers: formValue.maxPlayers,
       members: [user.uid],
       sessionType: formValue.sessionType,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),

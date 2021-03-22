@@ -13,12 +13,11 @@ import {
   Redirect,
 } from "react-router-dom";
 import CreateQuiz from "./components/pages/CreateQuiz";
-import SessionLobby from "./components/session/SessionLobby";
 
 function App() {
   const [user] = useAuthState(auth);
   return (
-    <Card className="vh-100 d-flex flex-column justify-content-center">
+    <Card className="vh-100 d-flex flex-column">
       <Card.Header className="text-center">
         <Card.Title>Welcome to Quizzle!</Card.Title>
       </Card.Header>

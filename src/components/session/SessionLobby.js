@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Card, Row, Container } from "react-bootstrap";
+import { Card, Row, Container, Button } from "react-bootstrap";
 import ChatRoom from "../ChatRoom";
 import LeaveSession from "./LeaveSession";
 import { SessionContext } from "../pages/LobbyPage";
 import { auth } from "../../utils/firebase";
 import checkOwner from "../../utils/checkOwner";
-import AddQuestion from "./components/quiz/AddQuestion";
+import { Link } from "react-router-dom";
 
 const SessionLobby = () => {
   const { session, setSession } = useContext(SessionContext);
@@ -29,7 +29,9 @@ const SessionLobby = () => {
             <ChatRoom session={session} />
           </Row>
           <Row>
-            <AddQuestion />
+            <Link to="/CreateQuiz">
+              <Button variant="secondary">Create a Quiz</Button>
+            </Link>
           </Row>
         </Container>
         <LeaveSession owner={owner} setSession={setSession} />
