@@ -19,7 +19,7 @@ For the design, I wanted to familiarise myself more with Bootstrap, in particula
 <table>
 <thead>
 <tr>
-<th align="center" colspan="3">Webstack</th>
+<th align="center" colspan="4">Webstack</th>
 </tr>
 <tr>
 <th> <a href="https://reactjs.org/" title="React"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="50" height="50"/><br/>React</a></th>
