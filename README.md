@@ -2,7 +2,7 @@
 <p align="center">
   <h2 align="center">My Firebase Groupchat</h2>
 
-  <p align="center"><img src="front-end\app\assets\expo-QR-code.png" alt="screenshot"></p>
+  <p align="center"><img src="public\chatroom.png" alt="screenshot"></p>
 
 </p>
 
@@ -13,6 +13,7 @@
 This is a simple web application that uses realtime data with Firebase authentication, cloud storage and push notification.
 I would like to expand on the functionality of this project more in the future, but for the time being, the main functionality of this application allows users to participate anonymously in a public chat as well as create and join private group chats.
 For the design, I wanted to familiarise myself more with Bootstrap, in particular through designing and implementing a custom theme.
+
 #### Built With
 
 <table>
@@ -27,4 +28,3 @@ For the design, I wanted to familiarise myself more with Bootstrap, in particula
 </tr>
 </thead>
 </table>
-
