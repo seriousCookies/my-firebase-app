@@ -24,7 +24,9 @@ For the design, I wanted to familiarise myself more with Bootstrap, in particula
 <tr>
 <th> <a href="https://reactjs.org/" title="React"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="50" height="50"/><br/>React</a></th>
 <th> <a href="https://getbootstrap.com" title="Bootstrap"> <img src="https://github.com/tomchen/stack-icons/blob/master/logos/bootstrap.svg" alt="bootstrap" width="50" height="50"/><br/>Bootstrap</a></th>
+<th> <a href="https://sass-lang.com/" title="Sass"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/sass.svg" alt="Sass" width="50px" height="50px"><br/>SASS</a></th>
 <th> <a href="https://firebase.google.com/" title="Firebase" target="_blank"> <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="50" height="50"/><br/>Firebase</a></th>
+
 </tr>
 </thead>
 </table>
